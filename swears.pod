@@ -1,0 +1,72 @@
+=head1 NAME
+
+Filter::Swears will filter words or phrases from a string.
+
+=head1 SYNOPSIS
+
+ use Filter::Swears;
+
+ my $string = 'Hooray for boobies!';
+ my $filter = Filter::Swears->new( { char   => '*', 
+                                     string => $string, 
+	                                 strict => 1 } );
+
+ print "Content-type: text/html\n\n";
+ print $filter->parse( ['boobies'] );
+
+=head1 DESCRIPTION
+
+The Filter::Swears module will filter words or phrases from a string.
+
+The new() method accepts a hashref of options.
+
+char   - The character to substitute filtered words with.
+string - The string to filter.
+strict - Set to 1 for strict filtering or 0 for gentle filtering.
+
+You may pass in an arrayref of words or phrases to the parse() method or a system file path.
+The file should contain one word or phrase per line to filter out.
+
+Using non strict filtering would filter the following (amongst other combinations)...
+
+boobies
+b.o.o.b.i.e.s
+b_o_o_b_i_e_s
+bboooobbiieess
+
+..and any other combination of characters between the letters.
+
+Strict spacing would catch:
+
+b
+o
+o
+b
+i
+e
+s
+
+or b o o b i e s
+
+=head1 BUGS
+
+Please report any strange occurances to paul@cpan.org
+
+=head1 AUTHOR
+
+Written by Paul Wilson.
+
+=head1 COPYRIGHT
+
+Copyright (c) 2002 Paul Wilson.  All Rights Reserved.
+http://www.wiredon.net/
+
+This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
+
+=head1 VERSION
+
+Revision: $Id: Swears.pm,v 1.01 2002/05/02 12:40:33 paul Exp $
+
+=cut
+
+1;

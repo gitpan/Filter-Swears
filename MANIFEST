@@ -1,0 +1,6 @@
+MANIFEST
+Makefile.PL
+README
+Filter/Swears.pm
+swears.pod
+example.cgi
